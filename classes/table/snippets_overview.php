@@ -26,6 +26,8 @@
 
 namespace theme_boost_union\table;
 
+use theme_boost_union\snippets;
+
 defined('MOODLE_INTERNAL') || die();
 
 // Require table library.
@@ -235,7 +237,9 @@ class snippets_overview extends \table_sql {
                 ORDER BY sort';
 
         // Get records.
-        $this->rawdata = $DB->get_recordset_sql($sql);
+        $data = $DB->get_recordset_sql($sql);
+
+        $this->rawdata = snippets::compose_snippets_data( $data );
     }
 
     /**
