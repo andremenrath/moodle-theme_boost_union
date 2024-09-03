@@ -45,6 +45,7 @@ $string['settingsoverview_feel_desc'] = 'Settings for the overall behaviour of y
 $string['settingsoverview_content_desc'] = 'Settings for the global content of your Moodle site are located here: Footer, static pages, info banners, advertisement tiles and sliders.';
 $string['settingsoverview_functionality_desc'] = 'Settings for additional useful global or course-related functionality on your Moodle site are located here.';
 $string['settingsoverview_flavours_desc'] = 'With flavours, you can diversify the look of your Moodle site between cohorts and / or course categories.';
+$string['settingsoverview_snippets_desc'] = 'With CSS snippets, you can TODO.';
 $string['settingsoverview_smartmenus_desc'] = 'With smart menus, you can extend the navigation items of your Moodle site in the main menu and the user menus well as introduce a bottom menu or a top menu.';
 $string['settingsoverview_all'] = 'All settings on one page';
 $string['settingsoverview_all_desc'] = 'Here, you can open the standard Moodle category settings page for Boost Union that shows all settings on one page. But beware, it is really packed.';
@@ -1101,6 +1102,21 @@ $string['flavourspreviewflavour'] = 'Preview flavour';
 $string['flavourspreviewblindtext'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc id cursus metus aliquam eleifend mi in nulla. Felis imperdiet proin fermentum leo vel orci porta. Sed nisi lacus sed viverra tellus in hac habitasse. Vivamus arcu felis bibendum ut. Nisi porta lorem mollis aliquam ut porttitor. Odio euismod lacinia at quis risus sed vulputate odio. Sed felis eget velit aliquet sagittis id consectetur purus. Nec ullamcorper sit amet risus nullam eget. Pellentesque sit amet porttitor eget dolor. Cursus mattis molestie a iaculis at erat pellentesque.';
 $string['flavourstitle'] = 'Title';
 $string['flavourstitle_help'] = 'The flavour\'s title is just used internally to allow you to document a particular flavour in the list of flavours.';
+
+// Settings: CSS snippets page.
+$string['configtitlesnippets'] = 'CSS snippets';
+$string['snippetsdescription'] = 'Description';
+$string['snippetsenable'] = 'Enable';
+$string['snippetsdisable'] = 'Disable';
+$string['snippetsscope'] = 'Scope';
+$string['snippetsscopeglobal'] = 'Global';
+$string['snippetsgoal'] = 'Goal';
+$string['snippetsgoaleyecandy'] = 'Eye candy';
+$string['snippetsgoalbugfix'] = 'Bugfix';
+$string['snippetssnippets'] = 'CSS snippets';
+$string['snippetsnothingtodisplay'] = 'There aren\'t any CSS snippets which can be used.';
+$string['snippetsoverview_desc'] = '<p>Boost Union\'s CSS snippets offer a possibility to TODO.</p>';
+$string['snippetstitle'] = 'Title';
 
 // Settings: Smart menus page.
 $string['smartmenus'] = 'Smart menus';

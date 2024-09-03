@@ -43,16 +43,15 @@ require_once($CFG->libdir.'/tablelib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class snippets_overview extends \table_sql {
-    // TODO:
     /**
-     * @var int $count Flavours count.
+     * @var int $count Snippets count.
      */
     private $count;
 
     /**
-     * @var int $totalflavours Total flavours count.
+     * @var int $totalsnippets Total snippets count.
      */
-    private $totalflavours;
+    private $totalsnippets;
 
     /**
      * Setup table.
@@ -63,17 +62,19 @@ class snippets_overview extends \table_sql {
         global $DB;
 
         // Call parent constructor.
-        parent::__construct('flavours');
+        parent::__construct('snippets');
 
         // Define the headers and columns.
-        $headers[] = get_string('flavourstitle', 'theme_boost_union');
-        $headers[] = get_string('flavoursdescription', 'theme_boost_union');
-        $headers[] = get_string('flavoursappliesto', 'theme_boost_union');
+        $headers[] = get_string('snippetstitle', 'theme_boost_union');
+        $headers[] = get_string('snippetsdescription', 'theme_boost_union');
+        $headers[] = get_string('snippetsscope', 'theme_boost_union');
+        $headers[] = get_string('snippetsgoal', 'theme_boost_union');
         $headers[] = get_string('up') .'/'. get_string('down');
         $headers[] = get_string('actions');
         $columns[] = 'title';
         $columns[] = 'description';
-        $columns[] = 'appliesto';
+        $columns[] = 'scope';
+        $columns[] = 'goal';
         $columns[] = 'updown';
         $columns[] = 'actions';
         $this->sortable(false); // Having a sortable table would be nice, but this would interfere with the up/down feature.
@@ -85,7 +86,7 @@ class snippets_overview extends \table_sql {
 
         // Initialize values for the updown feature.
         $this->count = 0;
-        $this->totalflavours = $DB->count_records('theme_boost_union_flavours');
+        $this->totalsnippets = $DB->count_records('theme_boost_union_snippets');
     }
 
     /**
@@ -98,7 +99,7 @@ class snippets_overview extends \table_sql {
         global $OUTPUT;
 
         // Prepare action URL.
-        $actionurl = new \moodle_url('/theme/boost_union/flavours/overview.php');
+        $actionurl = new \moodle_url('/theme/boost_union/snippets/overview.php');
 
         // Initialize column value.
         $updown = '';
@@ -106,34 +107,34 @@ class snippets_overview extends \table_sql {
         // Get spacer icon.
         $spacer = $OUTPUT->pix_icon('spacer', '', 'moodle', ['class' => 'iconsmall']);
 
-        // If there is more than one flavour and we do not handle the first (number 0) flavour.
+        // If there is more than one snippet and we do not handle the first (number 0) snippet.
         if ($this->count > 0) {
             // Add the up icon.
             $updown .= \html_writer::link($actionurl->out(false,
                     ['action' => 'up', 'id' => $data->id, 'sesskey' => sesskey()]),
                     $OUTPUT->pix_icon('t/up', get_string('up'), 'moodle',
-                            ['class' => 'iconsmall']), ['class' => 'sort-flavour-up-action']);
+                            ['class' => 'iconsmall']), ['class' => 'sort-snippet-up-action']);
 
             // Otherwise, just add a spacer.
         } else {
             $updown .= $spacer;
         }
 
-        // If there is more than one flavour and we do not handle the last flavour.
-        if ($this->count < ($this->totalflavours - 1)) {
+        // If there is more than one snippet and we do not handle the last snippet.
+        if ($this->count < ($this->totalsnippets - 1)) {
             // Add the down icon.
             $updown .= '&nbsp;';
             $updown .= \html_writer::link($actionurl->out(false,
                     ['action' => 'down', 'id' => $data->id, 'sesskey' => sesskey()]),
                     $OUTPUT->pix_icon('t/down', get_string('down'), 'moodle',
-                            ['class' => 'iconsmall']), ['class' => 'sort-flavour-down-action']);
+                            ['class' => 'iconsmall']), ['class' => 'sort-snippet-down-action']);
 
             // Otherwise, just add a spacer.
         } else {
             $updown .= $spacer;
         }
 
-        // Increase the flavour counter.
+        // Increase the snippet counter.
         $this->count++;
 
         // Return the column value.
@@ -141,31 +142,31 @@ class snippets_overview extends \table_sql {
     }
 
     /**
-     * Applies to column.
+     * Scope column.
      *
      * @param \stdClass $data
-     * @return string
+     * @return mixed
      */
-    public function col_appliesto($data) {
-        // Initialize the badges.
-        $badges = [];
+    public function col_scope($data) {
+        // Get the string for the given scope from the language pack.
+        $string = get_string('snippetsscope'.$data->scope, 'theme_boost_union');
 
-        // If apply-to-categories is enabled, add a badge.
-        if ($data->applytocategories == true) {
-            $badges[] = \html_writer::tag('span',
-                    get_string('categories'),
-                    ['class' => 'badge bg-primary text-light']);
-        }
+        // Output Bootstrap label.
+        return \html_writer::tag('span', $string, ['class' => 'badge bg-primary text-light']);
+    }
 
-        // If apply-to-cohorts is enabled, add a badge.
-        if ($data->applytocohorts == true) {
-            $badges[] = \html_writer::tag('span',
-                    get_string('cohorts', 'cohort'),
-                    ['class' => 'badge bg-primary text-light']);
-        }
+    /**
+     * Goal column.
+     *
+     * @param \stdClass $data
+     * @return mixed
+     */
+    public function col_goal($data) {
+        // Get the string for the given goal from the language pack.
+        $string = get_string('snippetsgoal'.$data->goal, 'theme_boost_union');
 
-        // Implode and return the badges.
-        return implode(' ', $badges);
+        // Output Bootstrap label.
+        return \html_writer::tag('span', $string, ['class' => 'badge bg-primary text-light']);
     }
 
     /**
@@ -182,28 +183,22 @@ class snippets_overview extends \table_sql {
         // Initialize actions.
         $actions = [];
 
-        // Preview.
-        $actions[] = [
-                'url' => new \moodle_url('/theme/boost_union/flavours/preview.php', ['id' => $data->id]),
-                'icon' => new \pix_icon('i/search', get_string('flavoursedit', 'theme_boost_union')),
-                'attributes' => ['class' => 'action-preview'],
-        ];
-
-        // Edit.
-        $actions[] = [
-                'url' => new \moodle_url('/theme/boost_union/flavours/edit.php',
-                        ['action' => 'edit', 'id' => $data->id, 'sesskey' => sesskey()]),
-                'icon' => new \pix_icon('t/edit', get_string('flavoursedit', 'theme_boost_union')),
-                'attributes' => ['class' => 'action-edit'],
-        ];
-
-        // Delete.
-        $actions[] = [
-                'url' => new \moodle_url('/theme/boost_union/flavours/edit.php',
-                        ['action' => 'delete', 'id' => $data->id, 'sesskey' => sesskey()]),
-                'icon' => new \pix_icon('t/delete', get_string('flavourspreview', 'theme_boost_union')),
-                'attributes' => ['class' => 'action-delete'],
-        ];
+        // Enable/Disable.
+        if ($data->enabled == false) {
+            $actions[] = [
+                'url' => new \moodle_url('/theme/boost_union/snippets/overview.php',
+                        ['action' => 'enable', 'id' => $data->id, 'sesskey' => sesskey()]),
+                'icon' => new \pix_icon('t/hide', get_string('snippetsenable', 'theme_boost_union')),
+                'attributes' => ['class' => 'action-enable'],
+            ];
+        } else {
+            $actions[] = [
+                'url' => new \moodle_url('/theme/boost_union/snippets/overview.php',
+                        ['action' => 'disable', 'id' => $data->id, 'sesskey' => sesskey()]),
+                'icon' => new \pix_icon('t/show', get_string('snippetsdisable', 'theme_boost_union')),
+                'attributes' => ['class' => 'action-disable'],
+            ];
+        }
 
         // Compose action icons for all actions.
         $actionshtml = [];
@@ -218,11 +213,11 @@ class snippets_overview extends \table_sql {
         }
 
         // Return all actions.
-        return \html_writer::span(join('', $actionshtml), 'flavours-actions');
+        return \html_writer::span(join('', $actionshtml), 'snippets-actions');
     }
 
     /**
-     * Get the flavours for the table.
+     * Get the snippets for the table.
      *
      * @param int $pagesize
      * @param bool $useinitialsbar
@@ -233,13 +228,19 @@ class snippets_overview extends \table_sql {
 
         // Compose SQL base query.
         $sql = 'SELECT *
-                FROM {theme_boost_union_flavours} t
-                ORDER BY sort';
+                FROM {theme_boost_union_snippets} s
+                ORDER BY sortorder';
 
         // Get records.
         $data = $DB->get_recordset_sql($sql);
 
-        $this->rawdata = snippets::compose_snippets_data( $data );
+        $this->rawdata = snippets::compose_snippets_data($data);
+
+        // TODO Demo content
+        $this->rawdata = [['id' => 1, 'sortorder' => 1, 'title' => 'foo', 'description' => 'bar', 'scope' => 'global', 'goal' => 'bugfix', 'enabled' => true],
+            ['id' => 2, 'sortorder' => 2, 'title' => 'foofoo', 'description' => 'barbar', 'scope' => 'global', 'goal' => 'bugfix', 'enabled' => false],
+            ['id' => 3, 'sortorder' => 3, 'title' => 'barbar', 'description' => 'foofoo', 'scope' => 'global', 'goal' => 'bugfix', 'enabled' => true]];
+        $this->totalsnippets = 3;
     }
 
     /**
@@ -250,9 +251,8 @@ class snippets_overview extends \table_sql {
 
         // Show notification as html element.
         $notification = new \core\output\notification(
-                get_string('flavoursnothingtodisplay', 'theme_boost_union'), \core\output\notification::NOTIFY_INFO);
+                get_string('snippetsnothingtodisplay', 'theme_boost_union'), \core\output\notification::NOTIFY_INFO);
         $notification->set_show_closebutton(false);
         echo $OUTPUT->render($notification);
     }
-
 }
