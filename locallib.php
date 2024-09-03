@@ -2222,6 +2222,15 @@ function theme_boost_union_get_external_scss($type) {
 }
 
 /**
+ * TODO: get CSS for snippets.
+ *
+ * @return string The (S)CSS strings content.
+ */
+function theme_boost_union_get_snippets_scss() {
+    return '';
+}
+
+/**
  * Helper function which wxtracts and returns the pluginname for the given callback name.
  * This function simply differentiates between real plugins and core components.
  * The result is especially used in the footersuppressstandardfooter_* feature.
@@ -2398,3 +2407,4 @@ function theme_boost_union_remove_hookmanipulation_marker() {
     // Remove the markers.
     $cache->delete('theme_boost_union_manipulation_done');
 }
+

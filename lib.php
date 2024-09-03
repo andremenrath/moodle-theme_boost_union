@@ -159,6 +159,9 @@ function theme_boost_union_get_main_scss_content($theme) {
     // Thus, we sadly have to get and include the external Post SCSS here already.
     $scss .= theme_boost_union_get_external_scss('post');
 
+    // Setting: CSS Snippets.
+    $scss .= theme_boost_union_get_snippets_scss();
+
     return $scss;
 }
 

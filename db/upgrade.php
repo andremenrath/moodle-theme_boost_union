@@ -324,5 +324,29 @@ function xmldb_theme_boost_union_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2023102027, 'theme', 'boost_union');
     }
 
+    if ($oldversion < 2024060101) {
+        // Define table theme_boost_union_snippets to be created.
+        $table = new xmldb_table('theme_boost_union_snippets');
+
+        // Adding fields to table theme_boost_union_snippets.
+        $table->add_field('id', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, XMLDB_SEQUENCE, null);
+        $table->add_field('sortorder', XMLDB_TYPE_INTEGER, '18', null, null, null, null);
+        $table->add_field('source', XMLDB_TYPE_CHAR, '255', null, null, null, 'theme_boost_union');
+        $table->add_field('domain', XMLDB_TYPE_CHAR, '255', null, null, null, '');
+        $table->add_field('key', XMLDB_TYPE_CHAR, '255', null, null, null, null);
+        $table->add_field('enabled', XMLDB_TYPE_INTEGER, '1', null, XMLDB_NOTNULL, null, '0');
+
+        // Adding keys to table theme_boost_union_snippets.
+        $table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
+
+        // Conditionally launch create table for theme_boost_union_snippets.
+        if (!$dbman->table_exists($table)) {
+            $dbman->create_table($table);
+        }
+
+        // Boost_union savepoint reached.
+        upgrade_plugin_savepoint(true, 2024060101, 'theme', 'boost_union');
+    }
+
     return true;
 }
