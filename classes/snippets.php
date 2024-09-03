@@ -25,35 +25,16 @@ namespace theme_boost_union;
  */
 class snippets {
     /**
-     * Definition of builtin snippets.
-     * @var array
+     * Get a snippet defined in the code based on key and domain.
+     * @param string $key
+     * @param string $domain
+     * @return mixed
      */
-    const SNIPPETS = [
-        'fix_border' => [
-            'domain'      => 'theme_boost_union',
-            'title'       => 'Fix Borders',
-            'description' => 'Those borders are annoying',
-            'scope'       => 'global',
-            'goal'        => 'bug fix',
-            'css'         => '.border {radius: 4px;}',
-        ],
-        'fix_font_color' => [
-            'domain'      => 'theme_boost_union',
-            'title'       => 'Fix font color',
-            'scope'       => 'login',
-            'goal'        => 'eye candy',
-            'description' => 'Those borders are annoying',
-            'css'         => 'body {color: 4px;}',
-        ],
-        'bigger_title' => [
-            'domain'      => 'theme_boost_union',
-            'title'       => 'Bigger title',
-            'scope'       => 'course',
-            'description' => 'Make the course titles finally big enough!',
-            'goal'        => 'eye candy',
-            'css'         => 'h1 {font-size: 70px;}',
-        ],
-    ];
+    public static function get_snippet($key, $domain = 'theme_boost_union') {
+        if ('theme_boost_union' == $domain) {
+            return require_once(__DIR__ . sprintf('/theme/boost_union/snippets/builtin/%s.php', $key));
+        }
+    }
 
     /**
      * Compose snippets data.
@@ -61,12 +42,10 @@ class snippets {
      * @return void
      */
     public static function compose_snippets_data($snippets) {
-        foreach ($snippets as $row => $snippet) {
-            if ('code' === $snippet->source) {
-                $snippet->title = self::SNIPPETS[$snippet->key]['title'];
-                $snippet->description = self::SNIPPETS[$snippet->key]['description'];
-                $snippet->goal = self::SNIPPETS[$snippet->key]['goal'];
-                $snippet->scope = self::SNIPPETS[$snippet->key]['scope'];
+        foreach ($snippets as $row => $meta) {
+            if ('code' === $meta->source) {
+                $snippet = self::get_snippet($meta->key, $meta->domain);
+                $snippets[$row] = array_merge($meta, $snippet);
             } else {
                 unset($snippets[$row]);
             }

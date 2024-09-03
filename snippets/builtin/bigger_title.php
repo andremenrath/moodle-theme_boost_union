@@ -26,9 +26,9 @@ defined('MOODLE_INTERNAL') || die();
 
 return [
     'domain'      => 'theme_boost_union',
-    'title'       => 'Fix Borders',
-    'description' => 'Those borders are annoying',
-    'scope'       => 'global',
-    'goal'        => 'bugfix',
-    'css'         => '.border {radius: 4px;}',
+    'title'       => 'Bigger title',
+    'scope'       => 'course',
+    'description' => 'Make the course titles finally big enough!',
+    'goal'        => 'eyecandy',
+    'css'         => 'h1 {font-size: 70px;}',
 ];

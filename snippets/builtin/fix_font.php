@@ -26,9 +26,9 @@ defined('MOODLE_INTERNAL') || die();
 
 return [
     'domain'      => 'theme_boost_union',
-    'title'       => 'Fix Borders',
+    'title'       => 'Fix font color',
+    'scope'       => 'login',
+    'goal'        => 'eyecandy',
     'description' => 'Those borders are annoying',
-    'scope'       => 'global',
-    'goal'        => 'bugfix',
-    'css'         => '.border {radius: 4px;}',
+    'css'         => 'body {color: 4px;}',
 ];
