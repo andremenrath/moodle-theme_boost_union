@@ -234,6 +234,7 @@ class snippets_overview extends \table_sql {
         // Get records.
         $data = $DB->get_recordset_sql($sql);
 
+        // Compose snippet data to record.
         $this->rawdata = snippets::compose_snippets_data($data);
     }
 

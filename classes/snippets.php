@@ -32,29 +32,39 @@ class snippets {
      */
     public static function get_snippet($key, $domain = 'theme_boost_union') {
         global $CFG;
-        if ('theme_boost_union' == $domain) {
-            return require_once($CFG->dirroot . sprintf('/theme/boost_union/snippets/builtin/%s.php', $key));
+
+        if ('theme_boost_union' === $domain) {
+            $filename = $CFG->dirroot . sprintf('/theme/boost_union/snippets/builtin/%s.php', $key);
+
+            return file_exists($filename) ? require_once($filename) : false;
         }
+
+        return false;
     }
 
     /**
-     * Compose snippets data.
+     * Compose snippets file data to record.
      * @param mixed $data
      * @return array
      */
     public static function compose_snippets_data($snippetrecordset) {
         $snippets = [];
+
         foreach ($snippetrecordset as $snippetrecord) {
             if ('code' === $snippetrecord->source) {
-                $snippetcontent = self::get_snippet($snippetrecord->key, $snippetrecord->domain);
-                $snippetrecord->title = $snippetcontent['title'];
-                $snippetrecord->description = $snippetcontent['description'];
-                $snippetrecord->css = $snippetcontent['css'];
-                $snippetrecord->goal = $snippetcontent['goal'];
-                $snippetrecord->scope = $snippetcontent['scope'];
-                $snippets[] = $snippetrecord;
+                // Get snippet file content.
+                if ($snippetcontent = self::get_snippet($snippetrecord->key, $snippetrecord->domain)) {
+                    // Compose snippet file data.
+                    $snippetrecord->title = $snippetcontent['title'];
+                    $snippetrecord->description = $snippetcontent['description'];
+                    $snippetrecord->css = $snippetcontent['css'];
+                    $snippetrecord->goal = $snippetcontent['goal'];
+                    $snippetrecord->scope = $snippetcontent['scope'];
+                    $snippets[] = $snippetrecord;
+                }
             }
         }
+
         return $snippets;
     }
 
@@ -67,7 +77,7 @@ class snippets {
 
         // Compose SQL base query.
         $sql = "SELECT *
-                FROM m_theme_boost_union_snippets
+                FROM {theme_boost_union_snippets} s
                 WHERE enabled = '1'
                 ORDER BY sortorder";
 
