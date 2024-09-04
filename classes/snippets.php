@@ -151,11 +151,11 @@ class snippets {
 
         $css = '';
 
-        // foreach ($data as $snippet) {
-        //     if ($snippet->enabled) {
-        //         $css .= self::get_snippet($snippet->key, $snippet->domain)['css'] . ' ';
-        //     }
-        // }
+        foreach ($data as $snippet) {
+            if ($snippet->enabled) {
+                $css .= self::get_snippet_scss($snippet->key, $snippet->domain)['css'] . ' ';
+            }
+        }
 
         return $css;
     }
