@@ -88,10 +88,24 @@ if ($action !== null && confirm_sesskey()) {
             }
             break;
         case 'disable':
-            // TODO
+            // Get the snippet record and disable it in the database.
+            $currentsnippet = $DB->get_record('theme_boost_union_snippets', ['id' => $snippetid]);
+            $currentsnippet->enabled = false;
+            $DB->update_record('theme_boost_union_snippets', $currentsnippet);
+
+            // Purge the theme cache (as the list of CSS snippets has changed and the SCSS has to be re-compiled).
+            theme_reset_all_caches();
+
             break;
         case 'enable':
-            // TODO
+            // Get the snippet record and enable it in the database.
+            $currentsnippet = $DB->get_record('theme_boost_union_snippets', ['id' => $snippetid]);
+            $currentsnippet->enabled = true;
+            $DB->update_record('theme_boost_union_snippets', $currentsnippet);
+
+            // Purge the theme cache (as the list of CSS snippets has changed and the SCSS has to be re-compiled).
+            theme_reset_all_caches();
+
             break;
     }
 
