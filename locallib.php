@@ -2228,7 +2228,9 @@ function theme_boost_union_get_external_scss($type) {
  * @return string The (S)CSS strings content.
  */
 function theme_boost_union_get_snippets_scss() {
-    return snippets::get_enabled_snippet_css();
+    $snippetsscss = snippets::get_enabled_snippet_css();
+
+    return $snippetsscss;
 }
 
 /**
