@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 return [
     'domain'      => 'theme_boost_union',
     'title'       => 'Fix font color',
-    'scope'       => 'login',
+    'scope'       => 'global',
     'goal'        => 'eyecandy',
     'description' => 'Those borders are annoying',
     'css'         => 'body {color: 4px;}',

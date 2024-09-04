@@ -188,14 +188,14 @@ class snippets_overview extends \table_sql {
             $actions[] = [
                 'url' => new \moodle_url('/theme/boost_union/snippets/overview.php',
                         ['action' => 'enable', 'id' => $data->id, 'sesskey' => sesskey()]),
-                'icon' => new \pix_icon('t/hide', get_string('snippetsenable', 'theme_boost_union')),
+                'icon' => new \pix_icon('t/show', get_string('snippetsenable', 'theme_boost_union')),
                 'attributes' => ['class' => 'action-enable'],
             ];
         } else {
             $actions[] = [
                 'url' => new \moodle_url('/theme/boost_union/snippets/overview.php',
                         ['action' => 'disable', 'id' => $data->id, 'sesskey' => sesskey()]),
-                'icon' => new \pix_icon('t/show', get_string('snippetsdisable', 'theme_boost_union')),
+                'icon' => new \pix_icon('t/hide', get_string('snippetsdisable', 'theme_boost_union')),
                 'attributes' => ['class' => 'action-disable'],
             ];
         }

@@ -1110,6 +1110,7 @@ $string['snippetsenable'] = 'Enable';
 $string['snippetsdisable'] = 'Disable';
 $string['snippetsscope'] = 'Scope';
 $string['snippetsscopeglobal'] = 'Global';
+$string['snippetsscopecourse'] = 'Course';
 $string['snippetsgoal'] = 'Goal';
 $string['snippetsgoaleyecandy'] = 'Eye candy';
 $string['snippetsgoalbugfix'] = 'Bugfix';
@@ -1296,10 +1297,6 @@ $string['smartmenusrolecontext'] = 'Context';
 $string['smartmenusrolecontext_help'] = 'Select the context for which the user\'s role should be checked (Any context or system context only)';
 $string['smartmenussavechangesandconfigure'] = 'Save and configure items';
 $string['smartmenussettings'] = 'Smart menu settings';
-
-// CSS Snippets.
-$string['snippetsscopelogin'] = 'snippets scope login';
-$string['snippetsscopecourse'] = 'snippets scope course';
 
 // Privacy API.
 $string['privacy:metadata'] = 'The Boost Union theme does not store any personal data about any user.';
