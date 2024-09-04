@@ -1,0 +1,18 @@
+To add a new snippet create a new css file containing the
+
+/**
+ * Snippet Title: Fix Borders
+ * Domain:        theme_boost_union
+ * Scope:         global
+ * Goal:          bugfix
+ * Description:   Those borders are annoying!
+ *
+ * @package    theme_boost_union
+ * @copyright  2024 University of Graz
+ * @author     André Menrath <andre.menrath@uni-graz.at>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+h1 {
+    font-size: 70px;
+}
