@@ -66,9 +66,10 @@ class snippets {
         global $DB;
 
         // Compose SQL base query.
-        $sql = 'SELECT *
-                FROM {theme_boost_union_snippets} t
-                ORDER BY sort';
+        $sql = "SELECT *
+                FROM m_theme_boost_union_snippets
+                WHERE enabled = '1'
+                ORDER BY sortorder";
 
         // Get records.
         $data = $DB->get_recordset_sql($sql);
@@ -77,9 +78,11 @@ class snippets {
 
         foreach ($data as $snippet) {
             if ($snippet->enabled) {
-                $css .= self::get_snippet($snippet->key, $snippet->domain);
+                $css .= self::get_snippet($snippet->key, $snippet->domain)['css'] . ' ';
             }
         }
+
+        $data->close();
 
         return $css;
     }
