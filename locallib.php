@@ -24,6 +24,7 @@
 
 use core\di;
 use core\hook\manager as hook_manager;
+use theme_boost_union\snippets;
 
 /**
  * Build the course related hints HTML code.
@@ -2227,7 +2228,7 @@ function theme_boost_union_get_external_scss($type) {
  * @return string The (S)CSS strings content.
  */
 function theme_boost_union_get_snippets_scss() {
-    return '';
+    return snippets::get_enabled_snippet_css();
 }
 
 /**

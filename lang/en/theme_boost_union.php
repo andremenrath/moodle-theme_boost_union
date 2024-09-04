@@ -1297,6 +1297,10 @@ $string['smartmenusrolecontext_help'] = 'Select the context for which the user\'
 $string['smartmenussavechangesandconfigure'] = 'Save and configure items';
 $string['smartmenussettings'] = 'Smart menu settings';
 
+// CSS Snippets.
+$string['snippetsscopelogin'] = 'snippets scope login';
+$string['snippetsscopecourse'] = 'snippets scope course';
+
 // Privacy API.
 $string['privacy:metadata'] = 'The Boost Union theme does not store any personal data about any user.';
 

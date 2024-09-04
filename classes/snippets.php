@@ -31,25 +31,56 @@ class snippets {
      * @return mixed
      */
     public static function get_snippet($key, $domain = 'theme_boost_union') {
+        global $CFG;
         if ('theme_boost_union' == $domain) {
-            return require_once(__DIR__ . sprintf('/theme/boost_union/snippets/builtin/%s.php', $key));
+            return require_once($CFG->dirroot . sprintf('/theme/boost_union/snippets/builtin/%s.php', $key));
         }
     }
 
     /**
      * Compose snippets data.
-     * @param mixed $snippets
-     * @return void
+     * @param mixed $data
+     * @return array
      */
-    public static function compose_snippets_data($snippets) {
-        foreach ($snippets as $row => $meta) {
-            if ('code' === $meta->source) {
-                $snippet = self::get_snippet($meta->key, $meta->domain);
-                $snippets[$row] = array_merge($meta, $snippet);
-            } else {
-                unset($snippets[$row]);
+    public static function compose_snippets_data($snippetrecordset) {
+        $snippets = [];
+        foreach ($snippetrecordset as $snippetrecord) {
+            if ('code' === $snippetrecord->source) {
+                $snippetcontent = self::get_snippet($snippetrecord->key, $snippetrecord->domain);
+                $snippetrecord->title = $snippetcontent['title'];
+                $snippetrecord->description = $snippetcontent['description'];
+                $snippetrecord->css = $snippetcontent['css'];
+                $snippetrecord->goal = $snippetcontent['goal'];
+                $snippetrecord->scope = $snippetcontent['scope'];
+                $snippets[] = $snippetrecord;
             }
         }
         return $snippets;
+    }
+
+    /**
+     * Checks which snippets are active and returns their css.
+     * @return string
+     */
+    public static function get_enabled_snippet_css() {
+        global $DB;
+
+        // Compose SQL base query.
+        $sql = 'SELECT *
+                FROM {theme_boost_union_snippets} t
+                ORDER BY sort';
+
+        // Get records.
+        $data = $DB->get_recordset_sql($sql);
+
+        $css = '';
+
+        foreach ($data as $snippet) {
+            if ($snippet->enabled) {
+                $css .= self::get_snippet($snippet->key, $snippet->domain);
+            }
+        }
+
+        return $css;
     }
 }

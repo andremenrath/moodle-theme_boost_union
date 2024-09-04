@@ -235,12 +235,6 @@ class snippets_overview extends \table_sql {
         $data = $DB->get_recordset_sql($sql);
 
         $this->rawdata = snippets::compose_snippets_data($data);
-
-        // TODO Demo content
-        $this->rawdata = [['id' => 1, 'sortorder' => 1, 'title' => 'foo', 'description' => 'bar', 'scope' => 'global', 'goal' => 'bugfix', 'enabled' => true],
-            ['id' => 2, 'sortorder' => 2, 'title' => 'foofoo', 'description' => 'barbar', 'scope' => 'global', 'goal' => 'bugfix', 'enabled' => false],
-            ['id' => 3, 'sortorder' => 3, 'title' => 'barbar', 'description' => 'foofoo', 'scope' => 'global', 'goal' => 'bugfix', 'enabled' => true]];
-        $this->totalsnippets = 3;
     }
 
     /**
