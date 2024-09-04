@@ -67,7 +67,7 @@ class snippets {
 
         // Compose SQL base query.
         $sql = "SELECT *
-                FROM m_theme_boost_union_snippets
+                FROM {theme_boost_union_snippets}
                 WHERE enabled = '1'
                 ORDER BY sortorder";
 
