@@ -53,32 +53,35 @@ class snippets {
      * @param mixed $domain
      * @return string|null
      */
-    public static function get_snippet_file($key, $source, $domain = '') {
+    public static function get_snippet_file($key, $source, $domain) {
         global $CFG;
         if ('theme_boost_union' === $source) {
             $file = $CFG->dirroot . sprintf('/theme/boost_union/snippets/builtin/%s.scss', $key);
         } else {
+            // TODO: other sources.
             return null;
         }
+
         return is_readable($file) ? $file : null;
     }
 
     /**
-     * TODO
+     * Loads the Snippets SCSS content.
+     *
      * @param mixed $key
      * @param mixed $source
      * @param mixed $domain
-     * @return bool|string
+     * @return boolean|string
      */
-    public static function get_snippet_css($key, $source, $domain = '') {
-        // Get the snippets file, based on the source and domain.s
-        $file = self::get_snippet_file($key, $source);
+    public static function get_snippet_scss($key, $source, $domain = '') {
+        // Get the snippets file, based on the source and domain.
+        $file = self::get_snippet_file($key, $source, $domain);
 
         if (is_null($file)) {
-            return;
+            return null;
         }
-        $scss = file_get_contents( $file, false, null, 0);
 
+        $scss = file_get_contents( $file, false, null, 0);
         return $scss;
     }
 
@@ -88,11 +91,11 @@ class snippets {
      * @param string $domain
      * @return mixed
      */
-    public static function get_snippet_meta($key, $source) {
+    public static function get_snippet_meta($key, $source, $domain = '') {
         global $CFG;
 
         // Get the snippets file, based on the source and domain.
-        $file = self::get_snippet_file($key, $source);
+        $file = self::get_snippet_file($key, $source, $domain);
 
         if (is_null($file)) {
             return;
