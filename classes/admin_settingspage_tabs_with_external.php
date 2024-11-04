@@ -112,6 +112,6 @@ class admin_settingspage_tabs_with_external extends \theme_boost_admin_settingsp
             return '';
         }
 
-        return $OUTPUT->render_from_template('theme_boost/admin_setting_tabs', $context);
+        return $OUTPUT->render_from_template('theme_boost_union/admin_setting_tabs_with_external', $context);
     }
 }

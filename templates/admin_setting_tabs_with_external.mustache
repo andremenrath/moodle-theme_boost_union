@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost/admin_setting_tabs
+    @template theme_boost_union/admin_setting_tabs_with_external
 
 
     Example context (json):
@@ -36,10 +36,16 @@
         ]
     }
 }}
+{{!
+    This template is a modified version of theme_boost/admin_setting_tabs
+
+    Modifications compared to the original template:
+    * Support tabs as external admin pages
+}}
 <ul class="nav nav-tabs" role="tablist">
     {{#tabs}}
         <li class="nav-item">
-            <a href="#{{name}}" class="nav-link {{#active}}active{{/active}}" data-toggle="tab" role="tab"
+            <a href="{{#externaltab}}{{name}}{{/externaltab}}{{^externaltab}}#{{name}}{{/externaltab}}" class="nav-link {{#active}}active{{/active}}"{{^externaltab}} data-toggle="tab"{{/externaltab}} role="tab"
                 {{#active}}aria-selected="true"{{/active}}
                 {{^active}}aria-selected="false" tabindex="-1"{{/active}}>{{displayname}}</a>
         </li>
