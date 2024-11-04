@@ -141,12 +141,6 @@ echo $tabtree->render_tabtree('snippetsoverview');
 // Show snippets description.
 echo get_string('snippetsoverview_desc', 'theme_boost_union');
 
-// Add experimental warning.
-$experimentalnotification = new \core\output\notification(get_string('snippetsexperimental', 'theme_boost_union'),
-    \core\output\notification::NOTIFY_WARNING);
-$experimentalnotification->set_show_closebutton(false);
-echo $OUTPUT->render($experimentalnotification);
-
 // Show the table (which may, if it is empty, fall back to the "There aren't any CSS snippets which can be used." notice).
 $table->out(0, true);
 

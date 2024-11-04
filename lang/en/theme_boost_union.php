@@ -1112,7 +1112,6 @@ $string['snippetsdetails'] = 'Details';
 $string['snippetsdetailspreview'] = 'Preview';
 $string['snippetsdisable'] = 'Disable';
 $string['snippetsenable'] = 'Enable';
-$string['snippetsexperimental'] = 'Please note: The CSS snippets functionality is fully usable in the current state of implementation, but has to be <em>considered as extendible</em> as currently only snippets which are built into or added to the Boost Union plugin codebase can be used.';
 $string['snippetsgoal'] = 'Goal';
 $string['snippetsgoalaccessibility'] = 'Accessibility';
 $string['snippetsgoalbugfix'] = 'Bugfix';
