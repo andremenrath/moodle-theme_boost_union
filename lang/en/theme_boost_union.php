@@ -1106,6 +1106,8 @@ $string['flavourstitle_help'] = 'The flavour\'s title is just used internally to
 
 // Settings: CSS snippets page.
 $string['configtitlesnippets'] = 'CSS snippets';
+
+// Settings: Overview tab.
 $string['snippetscreator'] = 'Creator';
 $string['snippetsdescription'] = 'Description';
 $string['snippetsdetails'] = 'Details';
@@ -1125,13 +1127,20 @@ $string['snippetsscope'] = 'Scope';
 $string['snippetsscopecourse'] = 'Course';
 $string['snippetsscopedashboard'] = 'Dashboard';
 $string['snippetsscopeglobal'] = 'Global';
-$string['snippetssettings'] = 'Settings';
 $string['snippetsshowdetails'] = 'Show details';
 $string['snippetssnippets'] = 'CSS snippets';
 $string['snippetssource'] = 'Source';
 $string['snippetssourcetheme_boost_union'] = 'Boost Union built-in';
 $string['snippetstitle'] = 'Title';
 $string['snippetsusagenote'] = 'Usage note';
+
+// Settings: Settings tab.
+$string['snippetssettings'] = 'Settings';
+// ... Section: Built-in snippets.
+$string['snippetsbuiltinsnippetsheading'] = 'Built-in snippets';
+// ... ... Setting: Enable built-in snippets.
+$string['enablebuiltinsnippets'] = 'Enable built-in snippets';
+$string['enablebuiltinsnippets_desc'] = 'With this setting, you can enable or disable the built-in CSS snippets which are shipped with Boost Union. If you disable this setting, all built-in CSS snippets are ignored and never added to the SCSS stack.';
 
 // Settings: Smart menus page.
 $string['smartmenus'] = 'Smart menus';

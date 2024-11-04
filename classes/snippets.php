@@ -71,6 +71,13 @@ class snippets {
     ];
 
     /**
+     * Constant for identifying builtin snippets.
+     *
+     * @var string
+     */
+    const SOURCE_BUILTIN = 'theme_boost_union';
+
+    /**
      * Gets the snippet file based on the meta information.
      *
      * @param string $path The snippet's path.
@@ -83,7 +90,7 @@ class snippets {
 
         // Get the snippet file based on the different sources.
         // Builtin CSS Snippets.
-        if ($source === 'theme_boost_union') {
+        if ($source === self::SOURCE_BUILTIN) {
             // Compose the file path.
             $file = $CFG->dirroot . self::BUILTIN_SNIPPETS_BASE_PATH . $path;
 
@@ -151,7 +158,7 @@ class snippets {
 
         // Get the snippet file based on the different sources.
         // Builtin CSS Snippets.
-        if ($source === 'theme_boost_union') {
+        if ($source === self::SOURCE_BUILTIN) {
             $url = self::get_builtin_snippet_preview_url($path, $source);
             // Other snippet sources (which are currently not supported).
         } else {
@@ -264,14 +271,24 @@ class snippets {
     public static function get_enabled_snippet_scss(): string {
         global $DB;
 
+        // Prepare WHERE clause based on the enabled sources.
+        $whereparts = self::get_enabled_sources();
+        if (count($whereparts) == 0) {
+            // If no sources are enabled, we do not want to use any snippets.
+            // We do this by restricting the query to an impossible source.
+            $whereparts[] = 'impossible';
+        }
+        list($insql, $inparams) = $DB->get_in_or_equal($whereparts, SQL_PARAMS_NAMED);
+
         // Compose SQL base query.
         $sql = "SELECT *
                 FROM {theme_boost_union_snippets} s
-                WHERE enabled = '1'
-                ORDER BY sortorder";
+                WHERE enabled = '1' AND source ".$insql.
+                " ORDER BY sortorder";
+        $sqlparams = $inparams;
 
         // Get records.
-        $data = $DB->get_recordset_sql($sql);
+        $data = $DB->get_recordset_sql($sql, $sqlparams);
 
         // Initialize SCSS code.
         $scss = '';
@@ -369,6 +386,24 @@ class snippets {
     }
 
     /**
+     * Get the enabled snippet sources.
+     *
+     * @return array
+     */
+    public static function get_enabled_sources(): array {
+        // Initialize sources array.
+        $sources = [];
+
+        // If builtin snippets are enabled.
+        if (get_config('theme_boost_union', 'enablebuiltinsnippets') == THEME_BOOST_UNION_SETTING_SELECT_YES) {
+            $sources[] = self::SOURCE_BUILTIN;
+        }
+
+        // Return.
+        return $sources;
+    }
+
+    /**
      * Make sure that the builtin snippets are in the database.
      *
      * @return void
@@ -382,7 +417,7 @@ class snippets {
         // Get builtin snippets which are known in the database.
         $snippets = $DB->get_records(
                 'theme_boost_union_snippets',
-                ['source' => 'theme_boost_union'],
+                ['source' => self::SOURCE_BUILTIN],
                 'sortorder DESC',
                 'id,path,sortorder'
         );
@@ -406,7 +441,7 @@ class snippets {
                     'theme_boost_union_snippets',
                     [
                         'path' => $path,
-                        'source' => 'theme_boost_union',
+                        'source' => self::SOURCE_BUILTIN,
                         'sortorder' => $sortorder + 1,
                     ]
                 );

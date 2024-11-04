@@ -272,13 +272,24 @@ class snippets_overview extends \table_sql {
     public function query_db($pagesize, $useinitialsbar = true) {
         global $DB;
 
+        // Prepare WHERE clause based on the enabled sources.
+        $whereparts = snippets::get_enabled_sources();
+        if (count($whereparts) == 0) {
+            // If no sources are enabled, we do not want to show any snippets.
+            // We do this by restricting the query to an impossible source.
+            $whereparts[] = 'impossible';
+        }
+        list($insql, $inparams) = $DB->get_in_or_equal($whereparts, SQL_PARAMS_NAMED);
+
         // Compose SQL base query.
         $sql = 'SELECT *
                 FROM {theme_boost_union_snippets} s
-                ORDER BY sortorder';
+                WHERE source '.$insql.
+                ' ORDER BY sortorder';
+        $sqlparams = $inparams;
 
         // Get the raw records.
-        $data = $DB->get_recordset_sql($sql);
+        $data = $DB->get_recordset_sql($sql, $sqlparams);
 
         // Compose the complete snippets data and add set it as raw table data.
         $this->rawdata = snippets::compose_snippets_data($data);
