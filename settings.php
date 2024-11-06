@@ -2883,7 +2883,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         }, snippets::ALLOWED_PREVIEW_FILE_EXTENSIONS);;
         $uploadedsnippetsextensions[] = '.scss';
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'snippets', 0,
-                ['maxfiles' => -1, 'subdirs' => 0, 'accepted_types' => $uploadedsnippetsextensions]);
+                ['maxfiles' => -1, 'subdirs' => 1, 'accepted_types' => $uploadedsnippetsextensions]);
         $tab->add($setting);
         $page->hide_if('theme_boost_union/uploadedsnippets', 'theme_boost_union/enableuploadedsnippets', 'neq',
         THEME_BOOST_UNION_SETTING_SELECT_YES);
