@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union - CSS snippets
+ * Theme Boost Union - SCSS snippets
  *
  * @package    theme_boost_union
  * @copyright  2024 André Menrath, University of Graz <andre.menrath@uni-graz.at>
@@ -49,7 +49,7 @@ class snippets {
     ];
 
     /**
-     * Base path CSS snippets that are shipped with boost_union.
+     * Base path SCSS snippets that are shipped with boost_union.
      *
      * @var string
      */
@@ -89,7 +89,7 @@ class snippets {
         global $CFG;
 
         // Get the snippet file based on the different sources.
-        // Builtin CSS Snippets.
+        // Builtin SCSS Snippets.
         if ($source === self::SOURCE_BUILTIN) {
             // Compose the file path.
             $file = $CFG->dirroot . self::BUILTIN_SNIPPETS_BASE_PATH . $path;
@@ -157,7 +157,7 @@ class snippets {
         $url = null;
 
         // Get the snippet file based on the different sources.
-        // Builtin CSS Snippets.
+        // Builtin SCSS Snippets.
         if ($source === self::SOURCE_BUILTIN) {
             $url = self::get_builtin_snippet_preview_url($path, $source);
             // Other snippet sources (which are currently not supported).
@@ -362,7 +362,7 @@ class snippets {
     }
 
     /**
-     * Retrieve all builtin CSS snippetsfrom the actual scss files on disk.
+     * Retrieve all builtin SCSS snippetsfrom the actual scss files on disk.
      *
      * @return string[]
      */

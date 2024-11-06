@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union - CSS Snippets overview page
+ * Theme Boost Union - SCSS Snippets overview page
  *
  * @package    theme_boost_union
  * @copyright  2024 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
@@ -93,7 +93,7 @@ if ($action !== null && confirm_sesskey()) {
             $currentsnippet->enabled = false;
             $DB->update_record('theme_boost_union_snippets', $currentsnippet);
 
-            // Purge the theme cache (as the list of CSS snippets has changed and the SCSS has to be re-compiled).
+            // Purge the theme cache (as the list of SCSS snippets has changed and the SCSS has to be re-compiled).
             theme_reset_all_caches();
 
             break;
@@ -103,7 +103,7 @@ if ($action !== null && confirm_sesskey()) {
             $currentsnippet->enabled = true;
             $DB->update_record('theme_boost_union_snippets', $currentsnippet);
 
-            // Purge the theme cache (as the list of CSS snippets has changed and the SCSS has to be re-compiled).
+            // Purge the theme cache (as the list of SCSS snippets has changed and the SCSS has to be re-compiled).
             theme_reset_all_caches();
 
             break;
@@ -141,7 +141,7 @@ echo $tabtree->render_tabtree('snippetsoverview');
 // Show snippets description.
 echo get_string('snippetsoverview_desc', 'theme_boost_union');
 
-// Show the table (which may, if it is empty, fall back to the "There aren't any CSS snippets which can be used." notice).
+// Show the table (which may, if it is empty, fall back to the "There aren't any SCSS snippets which can be used." notice).
 $table->out(0, true);
 
 // Finish page output.

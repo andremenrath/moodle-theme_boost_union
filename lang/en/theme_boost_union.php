@@ -45,7 +45,7 @@ $string['settingsoverview_feel_desc'] = 'Settings for the overall behaviour of y
 $string['settingsoverview_content_desc'] = 'Settings for the global content of your Moodle site are located here: Footer, static pages, info banners, advertisement tiles and sliders.';
 $string['settingsoverview_functionality_desc'] = 'Settings for additional useful global or course-related functionality on your Moodle site are located here.';
 $string['settingsoverview_flavours_desc'] = 'With flavours, you can diversify the look of your Moodle site between cohorts and / or course categories.';
-$string['settingsoverview_snippets_desc'] = 'With CSS snippets, you can enable additional eye candy or visual fixes on your Moodle site.';
+$string['settingsoverview_snippets_desc'] = 'With SCSS snippets, you can enable additional eye candy or visual fixes on your Moodle site.';
 $string['settingsoverview_smartmenus_desc'] = 'With smart menus, you can extend the navigation items of your Moodle site in the main menu and the user menus well as introduce a bottom menu or a top menu.';
 $string['settingsoverview_all'] = 'All settings on one page';
 $string['settingsoverview_all_desc'] = 'Here, you can open the standard Moodle category settings page for Boost Union that shows all settings on one page. But beware, it is really packed.';
@@ -431,7 +431,7 @@ $string['customfontssetting'] = 'Custom fonts';
 $string['customfontssetting_desc'] = 'With this setting you can upload custom fonts to the theme. The advantage of uploading fonts to this file area is that those fonts can be delivered without a check if the user is logged in and can be used as locally installed fonts everywhere on the site. As soon as you have uploaded at least one font to this filearea and have stored the settings, a list will appear underneath which will give you CSS code snippets which you can use as a boilerplate to reference particular fonts in your custom SCSS.';
 // ... ... Information: Custom fonts list.
 $string['customfontslistsetting'] = 'Custom fonts list';
-$string['customfontslistsetting_desc'] = 'This is the list of fonts which you have uploaded to the custom fonts filearea. The given CSS snippets can be used to add these fonts to your custom SCSS. Please note that you will have to take care of the font format value as well as the font-family, font-style and font-weight CSS properties yourself for now as Boost Union is not able yet to parse the font files.';
+$string['customfontslistsetting_desc'] = 'This is the list of fonts which you have uploaded to the custom fonts filearea. The given SCSS snippets can be used to add these fonts to your custom SCSS. Please note that you will have to take care of the font format value as well as the font-family, font-style and font-weight CSS properties yourself for now as Boost Union is not able yet to parse the font files.';
 $string['customfontsfileurlpersistent'] = 'URL (persistent)';
 $string['customfontsfileurlrevisioned'] = 'URL (revisioned)';
 
@@ -1104,8 +1104,8 @@ $string['flavourspreviewblindtext'] = 'Lorem ipsum dolor sit amet, consectetur a
 $string['flavourstitle'] = 'Title';
 $string['flavourstitle_help'] = 'The flavour\'s title is just used internally to allow you to document a particular flavour in the list of flavours.';
 
-// Settings: CSS snippets page.
-$string['configtitlesnippets'] = 'CSS snippets';
+// Settings: SCSS snippets page.
+$string['configtitlesnippets'] = 'SCSS snippets';
 
 // Settings: Overview tab.
 $string['snippetscreator'] = 'Creator';
@@ -1120,15 +1120,15 @@ $string['snippetsgoalbugfix'] = 'Bugfix';
 $string['snippetsgoaldevsonly'] = 'For developers only';
 $string['snippetsgoaleaseofuse'] = 'Ease of use';
 $string['snippetsgoaleyecandy'] = 'Eye candy';
-$string['snippetsnothingtodisplay'] = 'There aren\'t any CSS snippets which can be used.';
+$string['snippetsnothingtodisplay'] = 'There aren\'t any SCSS snippets which can be used.';
 $string['snippetsoverview'] = 'Overview';
-$string['snippetsoverview_desc'] = '<p>Boost Union\'s CSS snippets offer a possibility to add small (or slightly larger) amounts of CSS to the Moodle site. This can be particularly handy for fixing small visual glitches in Moodle core or for adding eye candy to your Moodle site.</p>Please note that the CSS snippets are added to the SCSS stack one after another. Thus, the order of the snippets on this page is key.</p><p>Please note as well that after each change which you make on this page, the theme cache is purged. This is necessary to make sure that the compiled SCSS code which is shipped to the browser is up-to-date.</p>';
+$string['snippetsoverview_desc'] = '<p>Boost Union\'s SCSS snippets offer a possibility to add small (or slightly larger) amounts of CSS to the Moodle site. This can be particularly handy for fixing small visual glitches in Moodle core or for adding eye candy to your Moodle site.</p>Please note that the SCSS snippets are added to the SCSS stack one after another. Thus, the order of the snippets on this page is key.</p><p>Please note as well that after each change which you make on this page, the theme cache is purged. This is necessary to make sure that the compiled SCSS code which is shipped to the browser is up-to-date.</p>';
 $string['snippetsscope'] = 'Scope';
 $string['snippetsscopecourse'] = 'Course';
 $string['snippetsscopedashboard'] = 'Dashboard';
 $string['snippetsscopeglobal'] = 'Global';
 $string['snippetsshowdetails'] = 'Show details';
-$string['snippetssnippets'] = 'CSS snippets';
+$string['snippetssnippets'] = 'SCSS snippets';
 $string['snippetssource'] = 'Source';
 $string['snippetssourcetheme_boost_union'] = 'Boost Union built-in';
 $string['snippetssourceuploaded'] = 'Upload';
@@ -1141,15 +1141,15 @@ $string['snippetssettings'] = 'Settings';
 $string['snippetsbuiltinsnippetsheading'] = 'Built-in snippets';
 // ... ... Setting: Enable built-in snippets.
 $string['enablebuiltinsnippets'] = 'Enable built-in snippets';
-$string['enablebuiltinsnippets_desc'] = 'With this setting, you can enable or disable the built-in CSS snippets which are shipped with Boost Union. If you disable this setting, all built-in CSS snippets are ignored and never added to the SCSS stack.';
+$string['enablebuiltinsnippets_desc'] = 'With this setting, you can enable or disable the built-in SCSS snippets which are shipped with Boost Union. If you disable this setting, all built-in SCSS snippets are ignored and never added to the SCSS stack.';
 // ... Section: Uploaded snippets.
 $string['snippetsuploadedsnippetsheading'] = 'Uploaded snippets';
 // ... ... Setting: Enable uploaded snippets.
 $string['enableuploadedsnippets'] = 'Enable uploaded snippets';
-$string['enableuploadedsnippets_desc'] = 'With this setting, you can enable or disable uploading of CSS snippets within the Boost Union settings. If you disable this setting, uploading CSS snippets is not possible and all previously uploaded CSS snippets are ignored and never added to the SCSS stack.';
+$string['enableuploadedsnippets_desc'] = 'With this setting, you can enable or disable uploading of SCSS snippets within the Boost Union settings. If you disable this setting, uploading SCSS snippets is not possible and all previously uploaded SCSS snippets are ignored and never added to the SCSS stack.';
 // ... ... Setting: Upload snippets.
 $string['uploadedsnippets'] = 'Upload snippets';
-$string['uploadedsnippets_desc'] = 'Here, you can upload CSS snippets to be used in this Moodle instance. You can find the structure and syntax of the CSS snippets in our <a href="{$a->url}" target="_blank"">community snippet repository</a>.';
+$string['uploadedsnippets_desc'] = 'Here, you can upload SCSS snippets to be used in this Moodle instance. You can find the structure and syntax of the SCSS snippets in our <a href="{$a->url}" target="_blank"">community snippet repository</a>.';
 
 // Settings: Smart menus page.
 $string['smartmenus'] = 'Smart menus';

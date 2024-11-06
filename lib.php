@@ -161,7 +161,7 @@ function theme_boost_union_get_main_scss_content($theme) {
     // Thus, we sadly have to get and include the external Post SCSS here already.
     $scss .= theme_boost_union_get_external_scss('post');
 
-    // Get and include the SCSS of the enabled CSS snippets.
+    // Get and include the SCSS of the enabled SCSS snippets.
     $scss .= snippets::get_enabled_snippet_scss();
 
     return $scss;
@@ -305,7 +305,7 @@ function theme_boost_union_get_extra_scss($theme) {
     // However, due to the way how the theme_*_get_extra_scss callback functions are searched and called within Boost child theme
     // hierarchy Boost Union not only gets the extra SCSS from this function here but only from theme_boost_get_extra_scss as well.
     //
-    // There, the CSS snippets for the background image and the login background images are added already to the SCSS codebase.
+    // There, the SCSS snippets for the background image and the login background images are added already to the SCSS codebase.
     // Additionally, the custom SCSS from $theme->settings->scss (which hits the SCSS settings from theme_boost_union even though
     // the code is within theme_boost) is already added to the SCSS codebase as well.
     //

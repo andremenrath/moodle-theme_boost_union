@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union - CSS snippets overview table
+ * Theme Boost Union - SCSS snippets overview table
  *
  * @package    theme_boost_union
  * @copyright  2024 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir.'/tablelib.php');
 
 /**
- * List of CSS snippets.
+ * List of SCSS snippets.
  *
  * @package    theme_boost_union
  * @copyright  2024 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>

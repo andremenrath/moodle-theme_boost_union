@@ -103,7 +103,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
                 'theme/boost_union:configure');
         $ADMIN->add('theme_boost_union', $flavourspage);
 
-        // Create CSS snippets settings page as external page
+        // Create SCSS snippets settings page as external page
         // (and allow users with the theme/boost_union:configure capability to access it).
         $snippetspage = new admin_externalpage('theme_boost_union_snippets_overview',
                 get_string('configtitlesnippets', 'theme_boost_union', null, true),
@@ -2824,13 +2824,13 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $ADMIN->add('theme_boost_union', $page);
 
 
-        // Create CSS snippets settings page with tabs (and external pages).
+        // Create SCSS snippets settings page with tabs (and external pages).
         // (and allow users with the theme/boost_union:configure capability to access it).
         $page = new admin_settingspage_tabs_with_external('theme_boost_union_snippets',
                 get_string('configtitlesnippets', 'theme_boost_union', null, true),
                 'theme/boost_union:configure');
 
-        // Create CSS snippets overview tab
+        // Create SCSS snippets overview tab
         // (and allow users with the theme/boost_union:configure capability to access it).
         $tab = new admin_externalpage_in_tab('theme_boost_union_snippets_overview',
                 get_string('snippetsoverview', 'theme_boost_union', null, true),
@@ -2841,7 +2841,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
 
-        // Create CSS snippets settings tab.
+        // Create SCSS snippets settings tab.
         $tab = new admin_settingpage('theme_boost_union_snippets_settings',
                 get_string('snippetssettings', 'theme_boost_union', null, true));
 

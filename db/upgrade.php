@@ -349,7 +349,7 @@ function xmldb_theme_boost_union_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2024100702, 'theme', 'boost_union');
     }
 
-    // Load the builtin CSS snippets into the database.
+    // Load the builtin SCSS snippets into the database.
     // This is done with every plugin update, regardless of the plugin version.
     snippets::add_builtin_snippets();
 

@@ -30,7 +30,7 @@ use theme_boost_union\snippets;
  * @return bool
  */
 function xmldb_theme_boost_union_install() {
-    // Load the builtin CSS snippets into the database.
+    // Load the builtin SCSS snippets into the database.
     snippets::add_builtin_snippets();
 
     return true;
