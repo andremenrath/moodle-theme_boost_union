@@ -2882,6 +2882,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
             return '.'.$item;
         }, snippets::ALLOWED_PREVIEW_FILE_EXTENSIONS);;
         $uploadedsnippetsextensions[] = '.scss';
+        $uploadedsnippetsextensions[] = '.zip';
         $setting = new admin_setting_configstoredfile($name, $title, $description, 'snippets', 0,
                 ['maxfiles' => -1, 'subdirs' => 1, 'accepted_types' => $uploadedsnippetsextensions]);
         $tab->add($setting);
