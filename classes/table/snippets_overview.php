@@ -111,7 +111,7 @@ class snippets_overview extends \table_sql {
         $updown = '';
 
         // Get spacer icon.
-        $spacer = $OUTPUT->pix_icon('spacer', '', 'moodle', ['class' => 'iconsmall']);
+        $spacer = $OUTPUT->pix_icon('spacer', '', 'moodle', ['class' => 'iconsmall theme_boost_union-sortorderspacer']);
 
         // If there is more than one snippet and we do not handle the first (number 0) snippet.
         if ($this->count > 0) {
