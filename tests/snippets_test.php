@@ -127,12 +127,22 @@ final class snippets_test extends advanced_testcase {
 
         $this->resetAfterTest();
 
+        // Get the SCSS content of all enabled snippets.
         $scss = snippets::get_enabled_snippet_scss();
 
-        // No snippets are enabled by default, so the scss should be empty.
+        // Builtin snippets are disabled by default as a whole, so the scss should be empty.
         $this->assertEquals('', $scss);
 
-        // Enable a snippet directly via the DB.
+        // Enable builtin snippets directly via the DB.
+        set_config('enablebuiltinsnippets', 'yes', 'theme_boost_union');
+
+        // Get the SCSS content of all enabled snippets again.
+        $scss = snippets::get_enabled_snippet_scss();
+
+        // No particular builtin snippet is enabled by default, so the scss should still be empty.
+        $this->assertEquals('', $scss);
+
+        // Enable a builtin snippet directly via the DB.
         $snippet = $DB->get_record(
             'theme_boost_union_snippets',
             ['source' => 'theme_boost_union', 'path' => 'visual-depth.scss']
@@ -140,6 +150,7 @@ final class snippets_test extends advanced_testcase {
         $snippet->enabled = 1;
         $DB->update_record('theme_boost_union_snippets', $snippet);
 
+        // Get the SCSS content of all enabled snippets again.
         $scss = snippets::get_enabled_snippet_scss();
 
         // Verify that the Snippets SCSS content is now queried.
