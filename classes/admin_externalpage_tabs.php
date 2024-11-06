@@ -25,8 +25,6 @@
 namespace theme_boost_union;
 
 use moodle_url;
-use tabobject;
-use tabtree;
 
 /**
  * Class admin_externalpage_tabs.
@@ -63,7 +61,7 @@ class admin_externalpage_tabs {
      */
     public function add_tab(string $name, moodle_url $url, string $label) {
         // Create a new tab.
-        $newtab = new tabobject($name, $url, $label);
+        $newtab = new \core\output\tabobject($name, $url, $label);
 
         // Add the tab to the tab tree.
         $this->tabs[] = $newtab;
@@ -79,7 +77,7 @@ class admin_externalpage_tabs {
         global $OUTPUT;
 
         // Make a tabtree object from the added tabs.
-        $tabtree = new tabtree($this->tabs, $selected);
+        $tabtree = new \core\output\tabtree($this->tabs, $selected);
 
         // Render and return the tab tree.
         return $OUTPUT->render($tabtree);
