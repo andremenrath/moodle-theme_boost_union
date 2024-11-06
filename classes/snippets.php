@@ -442,7 +442,7 @@ class snippets {
                     [
                         'path' => $path,
                         'source' => self::SOURCE_BUILTIN,
-                        'sortorder' => $sortorder + 1,
+                        'sortorder' => ++$sortorder,
                     ]
                 );
             }
