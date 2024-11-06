@@ -1149,7 +1149,7 @@ $string['enableuploadedsnippets'] = 'Enable uploaded snippets';
 $string['enableuploadedsnippets_desc'] = 'With this setting, you can enable or disable uploading of SCSS snippets within the Boost Union settings. If you disable this setting, uploading SCSS snippets is not possible and all previously uploaded SCSS snippets are ignored and never added to the SCSS stack.';
 // ... ... Setting: Upload snippets.
 $string['uploadedsnippets'] = 'Upload snippets';
-$string['uploadedsnippets_desc'] = 'Here, you can upload SCSS snippets to be used in this Moodle instance. You can find the structure and syntax of the SCSS snippets in our <a href="{$a->url}" target="_blank"">community snippet repository</a>.';
+$string['uploadedsnippets_desc'] = 'Here, you can upload SCSS snippets to be used in this Moodle instance. You can find the structure and syntax of the SCSS snippets in our <a href="{$a->url}" target="_blank">SCSS snippets repository</a>. There, you also find instructions how to use existing community snippets.';
 
 // Settings: Smart menus page.
 $string['smartmenus'] = 'Smart menus';
