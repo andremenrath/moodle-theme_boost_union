@@ -1131,6 +1131,7 @@ $string['snippetsshowdetails'] = 'Show details';
 $string['snippetssnippets'] = 'CSS snippets';
 $string['snippetssource'] = 'Source';
 $string['snippetssourcetheme_boost_union'] = 'Boost Union built-in';
+$string['snippetssourceuploaded'] = 'Upload';
 $string['snippetstitle'] = 'Title';
 $string['snippetsusagenote'] = 'Usage note';
 
@@ -1141,6 +1142,14 @@ $string['snippetsbuiltinsnippetsheading'] = 'Built-in snippets';
 // ... ... Setting: Enable built-in snippets.
 $string['enablebuiltinsnippets'] = 'Enable built-in snippets';
 $string['enablebuiltinsnippets_desc'] = 'With this setting, you can enable or disable the built-in CSS snippets which are shipped with Boost Union. If you disable this setting, all built-in CSS snippets are ignored and never added to the SCSS stack.';
+// ... Section: Uploaded snippets.
+$string['snippetsuploadedsnippetsheading'] = 'Uploaded snippets';
+// ... ... Setting: Enable uploaded snippets.
+$string['enableuploadedsnippets'] = 'Enable uploaded snippets';
+$string['enableuploadedsnippets_desc'] = 'With this setting, you can enable or disable uploading of CSS snippets within the Boost Union settings. If you disable this setting, uploading CSS snippets is not possible and all previously uploaded CSS snippets are ignored and never added to the SCSS stack.';
+// ... ... Setting: Upload snippets.
+$string['uploadedsnippets'] = 'Upload snippets';
+$string['uploadedsnippets_desc'] = 'Here, you can upload CSS snippets to be used in this Moodle instance. You can find the structure and syntax of the CSS snippets in our <a href="{$a->url}" target="_blank"">community snippet repository</a>.';
 
 // Settings: Smart menus page.
 $string['smartmenus'] = 'Smart menus';

@@ -27,6 +27,7 @@ use theme_boost_union\admin_setting_configstoredfilealwayscallback;
 use theme_boost_union\admin_setting_configtext_url;
 use theme_boost_union\admin_settingspage_tabs_with_external;
 use theme_boost_union\admin_externalpage_in_tab;
+use theme_boost_union\snippets;
 use core\di;
 use core\hook\manager as hook_manager;
 
@@ -2857,6 +2858,35 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting = new admin_setting_configselect($name, $title, $description, THEME_BOOST_UNION_SETTING_SELECT_NO, $yesnooption);
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
+
+        // Create uploaded snippets heading.
+        $name = 'theme_boost_union/uploadedsnippetsheading';
+        $title = get_string('snippetsuploadedsnippetsheading', 'theme_boost_union', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Enable uploaded snippets.
+        $name = 'theme_boost_union/enableuploadedsnippets';
+        $title = get_string('enableuploadedsnippets', 'theme_boost_union', null, true);
+        $description = get_string('enableuploadedsnippets_desc', 'theme_boost_union', null, true);
+        $setting = new admin_setting_configselect($name, $title, $description, THEME_BOOST_UNION_SETTING_SELECT_NO, $yesnooption);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Setting: Uploaded snippets.
+        $name = 'theme_boost_union/uploadedsnippets';
+        $title = get_string('uploadedsnippets', 'theme_boost_union', null, true);
+        $snippetrepourl = 'https://github.com/moodle-an-hochschulen/moodle-theme_boost_union_snippets';
+        $description = get_string('uploadedsnippets_desc', 'theme_boost_union', ['url' => $snippetrepourl], true);
+        $uploadedsnippetsextensions = array_map(function($item) {
+            return '.'.$item;
+        }, snippets::ALLOWED_PREVIEW_FILE_EXTENSIONS);;
+        $uploadedsnippetsextensions[] = '.scss';
+        $setting = new admin_setting_configstoredfile($name, $title, $description, 'snippets', 0,
+                ['maxfiles' => -1, 'subdirs' => 0, 'accepted_types' => $uploadedsnippetsextensions]);
+        $tab->add($setting);
+        $page->hide_if('theme_boost_union/uploadedsnippets', 'theme_boost_union/enableuploadedsnippets', 'neq',
+        THEME_BOOST_UNION_SETTING_SELECT_YES);
 
         // Add tab to settings page.
         $page->add($tab);
