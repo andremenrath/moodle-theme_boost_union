@@ -38,12 +38,12 @@ final class snippets_test extends advanced_testcase {
      * @return void
      */
     public function test_parse_snippet_header(): void {
-        $meta = snippets::get_snippet_meta('visual-depth.scss', 'theme_boost_union');
+        $meta = snippets::get_snippet_meta('visual_depth.scss', 'theme_boost_union');
         $this->assertEquals('Visual depth', $meta->title);
         $this->assertEquals('global', $meta->scope);
         $this->assertEquals('eyecandy', $meta->goal);
         $this->assertEquals(
-            'A less flat design than is intended in the Boost theme. Realised by ' .
+            'A less flat design than the original Boost theme. Realized with ' .
             'box-shadows on a number of page elements and a colour gradient on the page background.',
             $meta->description
         );
@@ -80,7 +80,7 @@ final class snippets_test extends advanced_testcase {
         // Delete one snippet from the database.
         $DB->delete_records(
             'theme_boost_union_snippets',
-            ['source' => 'theme_boost_union', 'path' => 'visual-depth.scss']
+            ['source' => 'theme_boost_union', 'path' => 'visual_depth.scss']
         );
 
         $count = $DB->count_records(
@@ -96,7 +96,7 @@ final class snippets_test extends advanced_testcase {
         // The builtin snippet which was just deleted from the db should be registered again.
         $snippet = $DB->get_record(
             'theme_boost_union_snippets',
-            ['source' => 'theme_boost_union', 'path' => 'visual-depth.scss']
+            ['source' => 'theme_boost_union', 'path' => 'visual_depth.scss']
         );
 
         $this->assertNotEmpty($snippet);
@@ -145,7 +145,7 @@ final class snippets_test extends advanced_testcase {
         // Enable a builtin snippet directly via the DB.
         $snippet = $DB->get_record(
             'theme_boost_union_snippets',
-            ['source' => 'theme_boost_union', 'path' => 'visual-depth.scss']
+            ['source' => 'theme_boost_union', 'path' => 'visual_depth.scss']
         );
         $snippet->enabled = 1;
         $DB->update_record('theme_boost_union_snippets', $snippet);
@@ -168,9 +168,9 @@ final class snippets_test extends advanced_testcase {
     public function test_lookup_visual_preview_file(): void {
         global $CFG;
 
-        $file = snippets::get_snippet_preview_url('international_day_against_homophobia.scss', 'theme_boost_union');
+        $file = snippets::get_snippet_preview_url('rainbow_navbar.scss', 'theme_boost_union');
 
         // Check that indeed the present webp preview for this snippet is returned.
-        $this->assertEquals($CFG->wwwroot . '/theme/boost_union/snippets/builtin/international_day_against_homophobia.webp', $file);
+        $this->assertEquals($CFG->wwwroot . '/theme/boost_union/snippets/builtin/rainbow_navbar.webp', $file);
     }
 }
