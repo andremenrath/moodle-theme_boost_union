@@ -102,8 +102,7 @@ class admin_settingspage_tabs_with_external extends \theme_boost_admin_settingsp
                 $newtab['externaltab'] = true;
                 // And change the name (which is used as link in the mustache template)
                 // to hold the full URL of the external page..
-                $externalname = new \moodle_url('/theme/boost_union/snippets/overview.php');
-                $newtab['name'] = $externalname->out();
+                $newtab['name'] = $tab->url->out();
             }
             $context['tabs'][] = $newtab;
         }
