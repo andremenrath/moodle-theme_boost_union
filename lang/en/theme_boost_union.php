@@ -1108,6 +1108,7 @@ $string['flavourstitle_help'] = 'The flavour\'s title is just used internally to
 $string['configtitlesnippets'] = 'SCSS snippets';
 
 // Settings: Overview tab.
+$string['snippetsshowthecode'] = 'Show the SCSS code';
 $string['snippetscreator'] = 'Creator';
 $string['snippetsdescription'] = 'Description';
 $string['snippetsdetails'] = 'Details';

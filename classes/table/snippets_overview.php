@@ -236,13 +236,15 @@ class snippets_overview extends \table_sql {
             'attributes' => ['class' => 'action-details',
                     'data-action' => 'details',
                     'data-title' => $data->title,
-                    'data-source' => $this->pick_and_build_badge('snippetssource'.$data->source),
-                    'data-goal' => $this->pick_and_build_badge('snippetsgoal'.$data->goal),
-                    'data-scope' => $this->pick_and_build_badge('snippetsscope'.$data->scope),
+                    'data-source-badge' => $this->pick_and_build_badge('snippetssource'.$data->source),
+                    'data-goal-badge' => $this->pick_and_build_badge('snippetsgoal'.$data->goal),
+                    'data-scope-badge' => $this->pick_and_build_badge('snippetsscope'.$data->scope),
                     'data-description' => $data->description,
                     'data-creator' => $data->creator,
                     'data-usagenote' => $data->usagenote,
                     'data-image' => $data->image,
+                    'data-id' => $data->id,
+                    'data-code' => snippets::get_snippet_scss($data->path, $data->source),
                     ],
         ];
 

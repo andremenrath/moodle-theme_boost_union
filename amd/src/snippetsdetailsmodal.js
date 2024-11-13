@@ -68,11 +68,13 @@ const buildModal = async(element) => {
         title: element.getAttribute('data-title'),
         description: element.getAttribute('data-description'),
         image: element.getAttribute('data-image'),
-        source: element.getAttribute('data-source'),
-        goal: element.getAttribute('data-goal'),
-        scope: element.getAttribute('data-scope'),
+        source_badge: element.getAttribute('data-source-badge'),
+        goal_badge: element.getAttribute('data-goal-badge'),
+        scope_badge: element.getAttribute('data-scope-badge'),
         creator: element.getAttribute('data-creator'),
         usagenote: element.getAttribute('data-usagenote'),
+        id: element.getAttribute('data-id'),
+        code: element.getAttribute('data-code'),
     };
 
     await ModalCancel.create({
