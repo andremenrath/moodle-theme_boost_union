@@ -20,9 +20,9 @@
     {
         "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
         "image": "https://raw.githubusercontent.com/moodle-an-hochschulen/moodle-theme_boost_union/main/pix/screenshot.png",
-        "goal_badge": "<span class="badge bg-primary text-light">Bugfix</span>",
-        "scope_badge": "<span class="badge bg-primary text-light">Global</span>",
-        "source_badge": "<span class="badge bg-primary text-light">Boost Union built-in</span>",
+        "goalbadge": "<span class="badge bg-primary text-light">Bugfix</span>",
+        "scopebadge": "<span class="badge bg-primary text-light">Global</span>",
+        "sourcebadge": "<span class="badge bg-primary text-light">Boost Union built-in</span>",
         "code": "body { color: red; }",
         "id": 42
     }
@@ -55,24 +55,24 @@
                     <td>{{{creator}}}</td>
                 </tr>
             {{/creator}}
-            {{#source_badge}}
+            {{#sourcebadge}}
                 <tr>
                     <th scope="row">{{#str}}snippetssource, theme_boost_union{{/str}}</th>
-                    <td>{{{source_badge}}}</td>
+                    <td>{{{sourcebadge}}}</td>
                 </tr>
-            {{/source_badge}}
-            {{#goal_badge}}
+            {{/sourcebadge}}
+            {{#goalbadge}}
                 <tr>
                     <th scope="row">{{#str}}snippetsgoal, theme_boost_union{{/str}}</th>
-                    <td>{{{goal_badge}}}</td>
+                    <td>{{{goalbadge}}}</td>
                 </tr>
-            {{/goal_badge}}
-            {{#scope_badge}}
+            {{/goalbadge}}
+            {{#scopebadge}}
                 <tr>
                     <th scope="row">{{#str}}snippetsscope, theme_boost_union{{/str}}</th>
-                    <td>{{{scope_badge}}}</td>
+                    <td>{{{scopebadge}}}</td>
                 </tr>
-            {{/scope_badge}}
+            {{/scopebadge}}
         </tbody>
     </table>
     {{#code}}
