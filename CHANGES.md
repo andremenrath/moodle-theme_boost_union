@@ -8,6 +8,35 @@ Changes
 
 * 2024-09-04 - Feature: Add first version of CSS snippets feature, credits go to all members of the MoodleMootDACH dev camp team 22.
 
+### v4.5-r5
+
+* 2024-12-31 - Child theme support: Fully replicate Boost Union's extra SCSS if a Boost Union Child theme is the current theme, resolves #718, resolves theme_boost_union_child/#5.
+* 2024-12-31 - Bugfix / Child theme support: The theme_boost_union_get_pre_scss() and theme_boost_union_get_extra_scss() function used $theme->settings although they should not do that anymore, resolves #791
+* 2024-12-31 - Tests: Increase the test coverage for the background image setting, helps to resolve theme_boost_union_child/#5
+* 2024-12-31 - Bugfix: In flavours, not setting the brand color / bootstrap colors in a flavour did not result in the global brand color / bootstrap colors being served properly, resolves #790.
+* 2024-12-30 - Improvement: Add more flavour settings (Activity icon colors, navbar color, background image position), resolves #789.
+* 2024-12-25 - Documentation: Explain the SCSS stack order in the README.
+* 2024-12-25 - Bugfix: Fix the order in which all the pre SCSS assets are added to the SCSS stack, resolves #788.
+* 2024-12-22 - Feature: Allow overwriting of brand colors and the usage of SCSS (instead of pure CSS) in flavours, resolves #155.
+               Child theme support: If you are running a Boost Union Child theme, please make sure to adapt your child theme to our latest boilerplate.
+* 2024-12-15 - Feature: Add declaration of accessibility page and accessibility support page, resolves #567.
+
+### v4.5-r4
+
+* 2024-12-06 - Tests: Add several Behat optimisations to bring down the test suite run time, resolves #765.
+* 2024-12-06 - Upstream change: Adopt changes from MDL-83759 ('System notification navbar popover is misplaced in Moodle 4.4 and 4.5')
+* 2024-12-06 - Upstream change: Adopt changes from MDL-75610 ('Quiz activity name no longer being displayed in quiz landing page when using Safe Exam Browser'), resolves #766.
+
+### v4.5-r3
+
+* 2024-11-19 - Bugfix: The starred courses popover showed a JavaScript error in the browser JS console, resolves #759.
+* 2024-11-19 - Bugfix: The starred courses popover in the navbar must only be shown if Boost Union or Boost Union child is active, resolves #759.
+* 2024-11-18 - Improvement: Add the possibility to restrict smart menus and smart menu items to site admins and non-site admins only, resolves #421.
+* 2024-11-18 - Bugfix: Footer displacement on pages with minimal content, resolves #655.
+* 2024-11-18 - Upstream change: Adopt changes from MDL-77732 ('Custom menu items do not receive active behaviour'), resolves #436 #620 #384 #715.
+* 2024-11-13 - Upstream change: Adopt changes from MDL-78999 ('Site logo does not appear in mobile view'), resolves #753.
+* 2024-11-11 - Release: Add ssystems GmbH to the list of maintainers in README.md.
+
 ### v4.5-r2
 
 * 2024-10-31 - Bugfix: Fix possible site failure when a cohort or role used as restriction of a smart menu item is deleted, resolves #737.
@@ -78,7 +107,7 @@ Changes
 * 2024-07-04 - Upgrade: Fix Behat tests which broke due to the introduction of section pages in Moodle core.
 * 2024-07-04 - Upgrade: Adopt changes in boostnavbar.php from Boost core.
 * 2024-07-04 - Upgrade: Fix Behat tests which broke due to changes in the section naming in Moodle core.
-* 2024-07-04 - Upgrade: Adapt a Behat test as planned regarding the new theme selector in Moodle core. 
+* 2024-07-04 - Upgrade: Adapt a Behat test as planned regarding the new theme selector in Moodle core.
 * 2024-07-04 - Upgrade: Fix Behat tests which broke due to changes on the MyCourses page in Moodle core.
 * 2024-06-25 - Upgrade: Adopt and handle core changes for the footersuppressstandardfooter_* settings, moving from callback functions to hooks.
 * 2024-06-19 - Upgrade: Adopt changes in event-list-item.mustache from block_timeline in core.
@@ -87,7 +116,7 @@ Changes
 * 2024-06-19 - Upgrade: Adopt changes in navbar.mustache from Boost core.
 * 2024-06-01 - Prepare compatibility for Moodle 4.4.
 
-### v4.3-r15 
+### v4.3-r15
 
 * 2024-07-11 - Bugfix: Allow external SCSS to use SCSS variables by disabling the SCSS validation, resolves #683.
 * 2024-06-23 - Upstream change: Adopt change in view-chards.mustache from MDL-70829.
@@ -95,7 +124,7 @@ Changes
 * 2024-06-13 - Cleanup: Change @codingStandardsIgnore tags to phpcs:disable, resolves #676.
 * 2024-06-12 - Cleanup: Fix CSS warnings in external SCSS tests, resolves #674.
 
-### v4.3-r14 
+### v4.3-r14
 
 * 2024-06-10 - Cleanup: Introduce a dedicated Behat step to deactivate and activate debugging, resolves #670.
 * 2024-05-05 - Cleanup: Fix 'Implicitly marking a parameter as nullable is deprecated since PHP 8.4' codechecker warning, resolves #667.
