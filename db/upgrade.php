@@ -508,7 +508,7 @@ function xmldb_theme_boost_union_upgrade($oldversion) {
         }
 
         // Boost_union savepoint reached.
-        upgrade_plugin_savepoint(true, 2024100706, 'theme', 'boost_union');
+        upgrade_plugin_savepoint(true, 2024100709, 'theme', 'boost_union');
     }
 
     // Load the builtin SCSS snippets into the database.
